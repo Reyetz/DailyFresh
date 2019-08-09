@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'dailyfresh.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '192.168.75.129',
+        'HOST': '192.168.190.128',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'root',
@@ -157,7 +157,7 @@ EMAIL_FROM = '天天生鲜<tribez@foxmail.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.75.129:6379/9",
+        "LOCATION": "redis://192.168.190.128:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -170,3 +170,12 @@ SESSION_CACHE_ALIAS = "default"
 
 # 配置登录的url地址
 LOGIN_URL = '/user/login'
+
+# 设置Django的文件存储类
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
+
+# 设置fdfs使用的client.conf文件路径（把fdfs文件目录下的client.conf文件拷贝到项目中）
+FDFS_CLIENT_CONF = r'F:\PythonProject\WEB_LEARNING\dailyfresh\utils\fdfs\client.conf'
+
+# 设置fdfs存储服务器上ngix的IP和端口号
+FDFS_URL = 'http://192.168.190.128:8888/'

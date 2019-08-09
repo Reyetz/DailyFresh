@@ -4,7 +4,7 @@ from db.base_model import BaseModel
 
 
 class OrderInfo(BaseModel):
-    '''订单模型类'''
+    """订单模型类"""
     PAY_METHOD_CHOICES = (
         (1, '货到付款'),
         (2, '微信支付'),
@@ -35,7 +35,7 @@ class OrderInfo(BaseModel):
 
 
 class OrderGoods(BaseModel):
-    '''订单商品模型类'''
+    """订单商品模型类"""
     order = models.ForeignKey('OrderInfo', verbose_name='订单', on_delete=models.CASCADE)
     sku = models.ForeignKey('goods.GoodsSKU', verbose_name='商品SKU', on_delete=models.CASCADE)
     count = models.IntegerField(default=1, verbose_name='商品数目')

@@ -5,5 +5,5 @@ from django.shortcuts import render
 
 # /localhost
 def index(request):
-    '''首页'''
+    """首页"""
     return render(request, 'index.html')

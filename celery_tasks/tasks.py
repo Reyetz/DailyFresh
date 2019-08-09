@@ -9,11 +9,11 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dailyfresh.settings')
 django.setup()
 # 创建Celery类的实例对象
-app = Celery('celery_tasks.tasks', broker='redis://192.168.75.129:6379/8')
+app = Celery('celery_tasks.tasks', broker='redis://192.168.190.128:6379/8')
 # 定义任务函数
 @app.task
 def send_register_active_email(to_email, username, token):
-    '''发生激活邮件'''
+    """发生激活邮件"""
     # 组织邮件信息
     subject = '天天生鲜欢迎信息'
     message = ''
