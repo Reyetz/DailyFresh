@@ -105,3 +105,6 @@ class IndexPromotionBanner(BaseModel):
         db_table = 'df_index_promotion'
         verbose_name = '主页促销活动'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name

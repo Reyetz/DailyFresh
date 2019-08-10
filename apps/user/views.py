@@ -229,7 +229,6 @@ class UserOrderView(LoginRequiredMixin, View):
         """显示"""
         # 获取用户的订单信息
 
-
         return render(request, 'user_center_order.html', {'page': 'order'})
 
 
