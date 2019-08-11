@@ -1,5 +1,6 @@
 from django.contrib import admin
 from apps.goods import models
+from django.core.cache import cache
 # Register your models here.
 
 
@@ -10,6 +11,8 @@ class BaseModelAdmin(admin.ModelAdmin):
         # 发出任务，让celery worker重新生成静态首页
         from celery_tasks.tasks import generate_static_index_html
         generate_static_index_html.delay()
+        # 清除首页的缓存数据
+        cache.delete('index_page_data')
 
     def delete_model(self, request, obj):
         """删除表中的数据时调用"""
@@ -17,6 +20,8 @@ class BaseModelAdmin(admin.ModelAdmin):
         # 发出任务，让celery worker重新生成静态首页
         from celery_tasks.tasks import generate_static_index_html
         generate_static_index_html.delay()
+        # 清除首页的缓存数据
+        cache.delete('index_page_data')
 
 
 class GoodsTypeAdmin(BaseModelAdmin):
@@ -36,6 +41,8 @@ class IndexPromotionBannerAdmin(BaseModelAdmin):
 
 
 admin.site.register(models.GoodsType, GoodsTypeAdmin)
+admin.site.register(models.GoodsSKU)
+admin.site.register(models.Goods)
 admin.site.register(models.IndexGoodsBanner, IndexGoodsBannerAdmin)
 admin.site.register(models.IndexTypeGoodsBanner, IndexTypeGoodsBannerAdmin)
 admin.site.register(models.IndexPromotionBanner, IndexPromotionBannerAdmin)

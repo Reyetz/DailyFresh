@@ -38,14 +38,14 @@ def generate_static_index_html():
     # 获取首页促销活动信息
     promotion_banners = IndexPromotionBanner.objects.all().order_by('index')
     # 获取首页分类商品展示信息
-    for type_li in types:  # GoodsType
+    for type in types:  # GoodsType
         # 获取type种类首页分类商品的图片展示信息
-        image_banners = IndexTypeGoodsBanner.objects.filter(type=type_li, display_type=1).order_by('index')
+        image_banners = IndexTypeGoodsBanner.objects.filter(type=type, display_type=1).order_by('index')
         # 获取type种类首页分类商品的文字展示信息
-        title_banners = IndexTypeGoodsBanner.objects.filter(type=type_li, display_type=0).order_by('index')
+        title_banners = IndexTypeGoodsBanner.objects.filter(type=type, display_type=0).order_by('index')
         # 动态给type增加属性，分别保存首页分类商品的图片展示信息和文字展示信息
-        type_li.image_banners = image_banners
-        type_li.title_banners = title_banners
+        type.image_banners = image_banners
+        type.title_banners = title_banners
     # 组织模板上下文
     context = {
         'types': types,

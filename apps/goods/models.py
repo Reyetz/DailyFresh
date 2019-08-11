@@ -41,6 +41,9 @@ class GoodsSKU(BaseModel):
         verbose_name = '商品'
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Goods(BaseModel):
     """商品SPU模型类"""
@@ -52,6 +55,9 @@ class Goods(BaseModel):
         db_table = 'df_goods'
         verbose_name = '商品SPU'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class GoodsImage(BaseModel):
