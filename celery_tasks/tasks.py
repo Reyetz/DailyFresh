@@ -7,7 +7,7 @@ from celery import Celery
 from django.conf import settings
 from django.core.mail import send_mail
 import time
-from apps.goods.models import GoodsType, IndexPromotionBanner, IndexTypeGoodsBanner
+from apps.goods.models import GoodsType, IndexPromotionBanner, IndexTypeGoodsBanner, IndexGoodsBanner
 from django.template import loader
 
 
@@ -34,7 +34,7 @@ def generate_static_index_html():
     # 获取商品的种类信息
     types = GoodsType.objects.all()
     # 获取首页轮播商品信息
-    goods_banners = IndexTypeGoodsBanner.objects.all().order_by('index')
+    goods_banners = IndexGoodsBanner.objects.all().order_by('index')
     # 获取首页促销活动信息
     promotion_banners = IndexPromotionBanner.objects.all().order_by('index')
     # 获取首页分类商品展示信息
