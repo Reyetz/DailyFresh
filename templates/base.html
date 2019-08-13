@@ -7,6 +7,7 @@
 	{# 网页标题内容块 #}
 	<title>{% block title %}{% endblock title %}</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	{# 网页顶部引入文件块 #}
 	{% block top_files %}{% endblock top_files %}
@@ -16,7 +17,7 @@
 {% block header_con %}
 	<div class="header_con">
 		<div class="header">
-			<div class="welcome fl">欢迎来到天天生鲜!</div>
+			<div class="welcome fl"><a href="#">欢迎来到天天生鲜!</a></div>
 			<div class="fr">
 				{% if user.is_authenticated %}
 				<div class="login_btn fl">
@@ -35,7 +36,7 @@
 					<span>|</span>
 					<a href="{% url 'user:user' %}">用户中心</a>
 					<span>|</span>
-					<a href="cart.html">我的购物车</a>
+					<a href="{% url 'cart:show' %}">我的购物车</a>
 					<span>|</span>
 					<a href="{% url 'user:order' %}">我的订单</a>
 				</div>
@@ -47,13 +48,15 @@
 {# 网页顶部搜索框块 #}
 {% block search_bar %}
 	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="{% static 'images/logo.png' %}"></a>
+		<a href="{% url 'goods:index' %}" class="logo fl"><img src="{% static 'images/logo.png' %}"></a>
 		<div class="search_con fl">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
+			<form method="get" action="/search">
+			<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+			<input type="submit" class="input_btn fr" name="" value="搜索">
+			</form>
 		</div>
 		<div class="guest_cart fr">
-			<a href="#" class="cart_name fl">我的购物车</a>
+			<a href="{% url 'cart:show' %}" class="cart_name fl">我的购物车</a>
 			<div class="goods_count fl" id="show_count">{{ cart_count }}</div>
 		</div>
 	</div>

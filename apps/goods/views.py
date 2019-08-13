@@ -173,6 +173,6 @@ class ListView(View):
                    'cart_count': cart_count,
                    'pages': pages,
                    'sort': sort
-        }
+                   }
         # 使用模板
         return render(request, 'list.html', context)

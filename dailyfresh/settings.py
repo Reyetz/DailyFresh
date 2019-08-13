@@ -37,13 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'apps.user',  # 用户模块
     'apps.goods',  # 商品模块
     'apps.cart',  # 购物车模块
     'apps.order',  # 订单模块
-
     'tinymce',  # 富文本编辑器
+    'haystack',  # 全文检索框架
 ]
 
 MIDDLEWARE = [
@@ -179,3 +178,20 @@ FDFS_CLIENT_CONF = r'F:\PythonProject\WEB_LEARNING\dailyfresh\utils\fdfs\client.
 
 # 设置fdfs存储服务器上ngix的IP和端口号
 FDFS_URL = 'http://192.168.190.128:8888/'
+
+# 全文检索框架的配置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        # 使用whoosh引擎
+        # 'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        # 索引文件路径 存放索引目录
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+
+# 当添加、修改、删除数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# 控制每页显示搜索结果数量
+# HAYSTACK_SEARCH_RESULT_PER_PAGE = 5
