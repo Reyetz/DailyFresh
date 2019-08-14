@@ -17,7 +17,7 @@
 			<h3>{{ sku.name }}</h3>
 			<p>{{ sku.desc }}</p>
 			<div class="prize_bar">
-				<span class="show_pirze">¥<em>{{ sku.price }}</em></span>
+				<span class="show_price">¥<em>{{ sku.price }}</em></span>
 				<span class="show_unit">单  位：{{ sku.unite }}</span>
 			</div>
 			<div class="goods_num clearfix">
@@ -96,7 +96,7 @@
         // 计算商品的总价格
         function update_goods_amount() {
             // 获取商品的单价和数量
-            price = $('.show_pirze').children('em').text()
+            price = $('.show_price').children('em').text()
             count = $('.num_show').val()
             // 计算商品的总价
             price = parseFloat(price)

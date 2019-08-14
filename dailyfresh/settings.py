@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'dailyfresh.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '192.168.190.128',
+        'HOST': '114.55.252.116',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'root',
@@ -156,7 +156,7 @@ EMAIL_FROM = '天天生鲜<tribez@foxmail.com>'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.190.128:6379/9",
+        "LOCATION": "redis://114.55.252.116:6379/9",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -177,7 +177,7 @@ DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
 FDFS_CLIENT_CONF = r'F:\PythonProject\WEB_LEARNING\dailyfresh\utils\fdfs\client.conf'
 
 # 设置fdfs存储服务器上ngix的IP和端口号
-FDFS_URL = 'http://192.168.190.128:8888/'
+FDFS_URL = 'http://114.55.252.116:8888/'
 
 # 全文检索框架的配置
 HAYSTACK_CONNECTIONS = {
