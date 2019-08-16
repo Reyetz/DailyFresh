@@ -12,6 +12,8 @@
 		<li class="col05">小计</li>
 		<li class="col06">操作</li>
 	</ul>
+	<form method="post" action="{% url 'order:place' %}">
+	{% csrf_token %}
 	{% for sku in skus %}
 	<ul class="cart_list_td clearfix">
 		<li class="col01"><input type="checkbox" name="sku_ids" value="{{ sku.id }}" checked></li>
@@ -30,13 +32,14 @@
 		<li class="col08"><a href="javascript:;">删除</a></li>
 	</ul>
 	{% endfor %}
-	{% csrf_token %}
 	<ul class="settlements">
-		<li class="col01"><input type="checkbox" name="sku_ids" checked=""></li>
+		<li class="col01"><input type="checkbox" name="sku__ids" checked=""></li>
 		<li class="col02">全选</li>
 		<li class="col03">合计(不含运费)：<span>¥</span><em>{{ total_price }}</em><br>共计<b>{{ total_count }}</b>件商品</li>
-		<li class="col04"><a href="place_order.html">去结算</a></li>
+		<li class="col04"><input type="submit" value="去结算"></li>
 	</ul>
+	</form>
+	{% csrf_token %}
 {% endblock body %}
 {% block bottom_files %}
 	<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>

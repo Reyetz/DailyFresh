@@ -122,7 +122,7 @@ class ActiveView(View):
             user.save()
             # 跳转登录页面
             return redirect(reverse('user:login'))
-        except SignatureExpired as e:
+        except SignatureExpired:
             # 激活链接过期
             return HttpResponse('激活链接已过期')
 

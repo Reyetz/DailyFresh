@@ -131,11 +131,12 @@ class ListView(View):
             sort = 'default'
             skus = GoodsSKU.objects.filter(type=type).order_by('-id')
         # 对数据进行分页
-        paginator = Paginator(skus, 1)
+        paginator = Paginator(skus, 5)
         # 获取第page页的内容
+        # noinspection PyBroadException
         try:
             page = int(page)
-        except Exception as e:
+        except Exception:
             page = 1
         if page > paginator.num_pages:
             page = 1

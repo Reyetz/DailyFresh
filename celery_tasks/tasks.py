@@ -12,7 +12,7 @@ from django.template import loader
 
 
 # 创建Celery类的实例对象
-app = Celery('celery_tasks.tasks', broker='redis://114.55.252.116/8')
+app = Celery('celery_tasks.tasks', broker='redis://114.55.252.116:6379/8')
 # 定义任务函数
 @app.task
 def send_register_active_email(to_email, username, token):
