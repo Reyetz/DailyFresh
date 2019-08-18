@@ -23,9 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'k-$+poynz9vn97!yv@k(elalst6feuf2h@*d)%3d*#7r*qs6#q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+# 部署项目前此处改为True，使用Django自己提供的服务器，即：
+# DEBUG = False
+# 部署项目前，此处去掉：'*'，即：
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -132,6 +135,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# 指定收集静态文件的路径
+STATIC_ROOT = '/var/www/dailyfresh/static/'
 
 # 富文本编辑器配置
 TINYMCE_DEFAULT_CONFIG = {

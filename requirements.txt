@@ -1,0 +1,13 @@
+celery==4.3.0
+Django==2.2.3
+django-redis==4.10.0
+django-tinymce==2.8.0
+itsdangerous==1.1.0
+Pillow==6.1.0
+PyMySQL==0.9.3
+redis==3.3.5
+py3Fdfs==2.2.0
+jieba==0.39
+Whoosh==2.7.4
+django-haystack==2.8.1
+python-alipay-sdk==1.10.1
